@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joshua Wang | ePortfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg2: #f7f8fb;
+      --navy: #1e3a5f;
+      --navy-light: #2d5282;
+      --accent: #3b6cb7;
+      --accent-soft: #e8f0fb;
+      --text: #1a1a2e;
+      --text-mid: #4a5568;
+      --text-light: #718096;
+      --border: #e2e8f0;
+      --radius: 10px;
+      --shadow: 0 2px 12px rgba(30,58,95,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .nav-links button {
+      background: none;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      cursor: pointer;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+
+    .nav-links button:hover,
+    .nav-links button.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* PAGES */
+    .page { display: none; min-height: calc(100vh - 60px); }
+    .page.active { display: block; }
+
+    /* CONTAINERS */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+    }
+
+    .container-wide {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+    }
+
+    /* TYPOGRAPHY */
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.6rem;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.7rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    p { margin-bottom: 1rem; color: var(--text-mid); }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* BADGE */
+    .badge {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      margin: 0.2rem 0.2rem 0.2rem 0;
+    }
+
+    /* BUTTON */
+    .btn {
+      display: inline-block;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.65rem 1.4rem;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+      margin-right: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn:hover { background: var(--navy-light); text-decoration: none; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid var(--navy);
+    }
+
+    .btn-outline:hover { background: var(--accent-soft); }
+
+    /* ===================== HOME PAGE ===================== */
+    .home-hero {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 4rem 2rem 2rem;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .home-photo {
+      flex-shrink: 0;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border);
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .home-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .home-photo-placeholder {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .home-text h1 { margin-bottom: 0.5rem; }
+    .home-text .subtitle {
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .home-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .home-icon-link {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .home-icon-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .home-highlights {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .highlight-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+    }
+
+    .highlight-card .icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .highlight-card p { font-size: 0.85rem; margin-bottom: 0; }
+
+    /* ===================== ABOUT PAGE ===================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--bg2);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      text-align: center;
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    /* ===================== RESUME PAGE ===================== */
+    .resume-box {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      background: var(--bg2);
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .resume-embed {
+      width: 100%;
+      height: 800px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-top: 1.5rem;
+      display: none;
+    }
+
+    /* ===================== CAREER GOALS PAGE ===================== */
+    .timeline {
+      margin-top: 1rem;
+      border-left: 2px solid var(--border);
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.8rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 0.4rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .timeline-item .year {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .steps-list {
+      list-style: none;
+      margin-top: 0.75rem;
+    }
+
+    .steps-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 0.9rem;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      background: var(--navy);
+      color: white;
+      border-radius: 50%;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+    }
+
+    .steps-list p { margin-bottom: 0; }
+
+    /* ===================== PROJECTS PAGE ===================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg);
+      box-shadow: var(--shadow);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30,58,95,0.12);
+    }
+
+    .project-card-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .project-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-card-body { padding: 1.2rem 1.3rem; }
+
+    .project-award {
+      font-size: 0.78rem;
+      color: #b7791f;
+      font-weight: 500;
+      background: #fefce8;
+      border: 1px solid #fde68a;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card-body h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .project-card-body p { font-size: 0.88rem; margin-bottom: 0.75rem; }
+
+    .project-placeholder {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-light);
+      background: var(--bg2);
+      margin-top: 0.5rem;
+      grid-column: span 2;
+    }
+
+    .project-placeholder h3 { color: var(--text-light); font-weight: 400; font-size: 0.95rem; }
+
+    /* ===================== CONTACT PAGE ===================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--bg);
+      margin-bottom: 0.9rem;
+      transition: border-color 0.15s;
+      outline: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--accent); }
+
+    .contact-form label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: var(--text);
+    }
+
+    .contact-form textarea { height: 130px; resize: vertical; }
+
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-info-item .ci-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-soft);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info-item p { margin-bottom: 0; font-size: 0.88rem; }
+    .contact-info-item a { color: var(--accent); font-size: 0.88rem; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      background: var(--bg);
+    }
+
+    /* TOAST */
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--navy);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      opacity: 0;
+      transition: all 0.3s;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      h1 { font-size: 2rem; }
+      .home-hero { flex-direction: column; text-align: center; gap: 1.5rem; }
+      .home-highlights { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { width: 160px; height: 200px; margin: 0 auto; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-placeholder { grid-column: span 1; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links button { font-size: 0.8rem; padding: 0.35rem 0.55rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo" onclick="showPage('home')">Joshua Wang</span>
+  <ul class="nav-links">
+    <li><button onclick="showPage('home')" class="active" id="nav-home">Home</button></li>
+    <li><button onclick="showPage('about')" id="nav-about">About Me</button></li>
+    <li><button onclick="showPage('resume')" id="nav-resume">Resume</button></li>
+    <li><button onclick="showPage('goals')" id="nav-goals">Career Goals</button></li>
+    <li><button onclick="showPage('projects')" id="nav-projects">Projects</button></li>
+    <li><button onclick="showPage('contact')" id="nav-contact">Contact</button></li>
+  </ul>
+</nav>
+
+<!-- ===================== HOME ===================== -->
+<div class="page active" id="page-home">
+  <div class="home-hero">
+    <div class="home-photo">
+      <!-- Replace src with your actual photo path e.g. src="photo.jpg" -->
+      <div class="home-photo-placeholder">Add your<br/>photo here</div>
+    </div>
+    <div class="home-text">
+      <p class="subtitle">Computer Engineering @ Georgia Tech</p>
+      <h1>Hi, I'm Joshua Wang.</h1>
+      <p>I'm a first-year ECE student at Georgia Tech with a 4.0 GPA, originally from Fairfax, VA. I'm really passionate about AI and machine learning — pretty much anything involving building intelligent systems that can actually do something useful in the real world.</p>
+      <p style="margin-bottom: 0.5rem;">I've had the chance to do research at NASA Langley, work as a software developer at HexLabs, and build some cool projects at hackathons. This site is kind of an overview of everything I've been working on so far, and where I'm hoping to go.</p>
+      <div class="home-links">
+        <a class="home-icon-link" href="mailto:wangjoshua98@gmail.com">✉ Email</a>
+        <a class="home-icon-link" href="https://linkedin.com/in/joshuaqwang" target="_blank">in LinkedIn</a>
+        <a class="home-icon-link" href="https://github.com/wang-joshua" target="_blank">⌥ GitHub</a>
+      </div>
+      <div style="margin-top: 1.2rem;">
+        <button class="btn" onclick="showPage('about')">About Me</button>
+        <button class="btn btn-outline" onclick="showPage('projects')">View Projects</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-highlights">
+    <div class="highlight-card">
+      <div class="icon">🚀</div>
+      <h3>NASA Research Intern</h3>
+      <p>Researched carbon nanotube electronics for interplanetary travel at NASA Langley Research Center.</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">💻</div>
+      <h3>Software Developer</h3>
+      <p>Building backend infrastructure and helping organize HackGT at HexLabs — one of the biggest collegiate hackathons in the US.</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">🏆</div>
+      <h3>Hackathon Winner</h3>
+      <p>Runner-up at MongoDB x MLH HexDay, and Google Cloud honorable mention at AIATL2025.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ABOUT ===================== -->
+<div class="page" id="page-about">
+  <div class="container">
+    <h1>About Me</h1>
+    <div class="about-grid">
+      <div>
+        <div class="about-photo">
+          <!-- Replace with: <img src="photo.jpg" alt="Joshua Wang" /> -->
+          <span>Add your<br/>photo here</span>
+        </div>
+      </div>
+      <div>
+        <p>Hey! I'm Joshua Wang, a first-year Computer Engineering student at Georgia Institute of Technology, originally from Fairfax, Virginia. I'm concentrating in Distributed Systems & Software Design, and Systems & Architecture — honestly two areas that I think are really important if you want to build AI systems that actually work at scale and not just on a laptop.</p>
+
+        <p>Growing up in Fairfax, I was always tinkering with computers. I started building custom PCs for people in high school and that kind of snowballed into a deeper interest in how hardware and software work together. Eventually that led me toward programming, and then machine learning once I saw what you could actually do with it. My first real exposure to ML research was at Bethel College's Mabee Observatory, where I built a convolutional neural network to denoise astronomical images — which was honestly one of the coolest things I've done.</p>
+
+        <p>Last year I got to do a research internship at NASA Langley Research Center, where I was part of a team looking at carbon nanotube-based electronics for interplanetary missions. I also led a 10-student group on Mars mission integration, which involved simulating spacecraft trajectories and designing communication systems. It was a lot of responsibility but I learned so much from it.</p>
+
+        <p>Right now I'm a Software Developer at HexLabs here at Georgia Tech, where I work on backend infrastructure and help organize HackGT — one of the largest collegiate hackathons in the country with about 1,000 participants and sponsors like OpenAI, Google, and GitHub. Outside of that I really enjoy building projects at hackathons, which is how SnapShelf and Procuroid came about (more on those in the projects page).</p>
+
+        <p>When I'm not coding, I'm usually watching Formula 1, messing around with PC hardware, or trying to keep up with whats happening in the AI space — there's always something new going on.</p>
+
+        <div class="divider"></div>
+        <h3>Technical Skills</h3>
+        <div class="skills-grid">
+          <span class="badge">Python</span>
+          <span class="badge">C / C++</span>
+          <span class="badge">Java</span>
+          <span class="badge">TypeScript</span>
+          <span class="badge">React</span>
+          <span class="badge">Node.js</span>
+          <span class="badge">SQL</span>
+          <span class="badge">Verilog / SystemVerilog</span>
+          <span class="badge">Machine Learning</span>
+          <span class="badge">Computer Vision</span>
+          <span class="badge">Neural Networks</span>
+          <span class="badge">Docker</span>
+          <span class="badge">Google Cloud</span>
+          <span class="badge">REST APIs</span>
+          <span class="badge">MongoDB</span>
+          <span class="badge">PostgreSQL</span>
+        </div>
+
+        <div class="divider"></div>
+        <h3>Education</h3>
+        <p><strong>Georgia Institute of Technology</strong> — B.S. Computer Engineering<br/>
+        Expected May 2028 &nbsp;·&nbsp; GPA: 4.00 / 4.00<br/>
+        <span style="font-size:0.88rem; color: var(--text-light);">Concentration: Distributed Systems & Software Design, Systems & Architecture</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== RESUME ===================== -->
+<div class="page" id="page-resume">
+  <div class="container">
+    <h1>Resume</h1>
+    <p>Below is my current resume. You can download a PDF copy using the button below. I try to keep it up to date as I take on new projects and experiences.</p>
+
+    <!-- UPDATE THIS HREF with the actual path to your resume PDF once uploaded to GitHub -->
+    <a class="btn" href="Joshua_Wang_Resume.pdf" download>⬇ Download Resume (PDF)</a>
+
+    <div class="divider"></div>
+
+    <h2 style="margin-top: 0;">Resume Overview</h2>
+    <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 2rem;">A summary of my experience and skills — download the full PDF above for complete details.</p>
+
+    <!-- EXPERIENCE -->
+    <h3>Experience</h3>
+    <div style="margin-top: 0.75rem;">
+      <div style="margin-bottom: 1.5rem; padding: 1.1rem 1.3rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border);">
+        <div style="display:flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+          <strong>Software Developer — HexLabs</strong>
+          <span style="font-size:0.82rem; color: var(--text-light);">Nov 2025 – Present · Atlanta, GA</span>
+        </div>
+        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Migrated backend infrastructure from Kubernetes to Google Cloud Run using TypeScript and Node.js. Working on Timber, HexLabs' hackathon judging platform, and helping organize HackGT with ~1,000 participants and sponsors like OpenAI and Google.</p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem; padding: 1.1rem 1.3rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border);">
+        <div style="display:flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+          <strong>Research Intern — NASA Langley Research Center</strong>
+          <span style="font-size:0.82rem; color: var(--text-light);">Dec 2024 – Jun 2025 · Hampton, VA</span>
+        </div>
+        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Investigated carbon nanotube-based electronics for interplanetary travel, showing up to 5x improved radiation resistance vs. standard silicon. Led a 10-student team on Mars mission integration, covering trajectory simulation, thermal modeling, and comms system design.</p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem; padding: 1.1rem 1.3rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border);">
+        <div style="display:flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+          <strong>Lab Assistant — Bethel College Mabee Observatory</strong>
+          <span style="font-size:0.82rem; color: var(--text-light);">Jun – Aug 2024 · North Newton, KS</span>
+        </div>
+        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Built and trained a Python CNN to denoise astronomical images and track celestial objects across 100+ Messier frames, automating multi-frame workflows with up to 25% greater efficiency.</p>
+      </div>
+
+      <div style="margin-bottom: 0.5rem; padding: 1.1rem 1.3rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border);">
+        <div style="display:flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+          <strong>Independent Computer Technician</strong>
+          <span style="font-size:0.82rem; color: var(--text-light);">Aug 2021 – Present · Fairfax, VA</span>
+        </div>
+        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Built and configured custom desktop computers for 15+ clients. Diagnosed and optimized thermal and power performance for a range of systems with 100% customer satisfaction.</p>
+      </div>
+    </div>
+
+    <!-- To embed your actual PDF, replace the resume-box div below with:
+    <iframe src="Joshua_Wang_Resume.pdf" class="resume-embed" style="display:block;"></iframe>
+    -->
+    <div class="resume-box">
+      <div style="font-size: 2rem;">📄</div>
+      <p style="margin-bottom: 0;">To embed your resume PDF here, upload <strong>Joshua_Wang_Resume.pdf</strong> to your GitHub repo alongside this file, then replace this box with an &lt;iframe&gt;.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CAREER GOALS ===================== -->
+<div class="page" id="page-goals">
+  <div class="container">
+    <h1>Career Goals</h1>
+    <p>My long-term goal is to become an AI/ML Engineer — someone who builds intelligent systems that actually work in production, not just in research papers. I want to work on problems that have real impact, whether that's improving how AI models are deployed at scale, making them more efficient, or applying them to fields like healthcare, space exploration, or robotics.</p>
+    <p>I'm still early in my career and figuring a lot of things out, but I have a pretty clear idea of the steps I need to take to get there. Here's how I'm thinking about it:</p>
+
+    <div class="divider"></div>
+
+    <h2 style="margin-top: 0;">My Path to AI/ML Engineering</h2>
+    <ul class="steps-list">
+      <li>
+        <div class="step-num">1</div>
+        <div>
+          <h3>Build a strong foundation at Georgia Tech</h3>
+          <p>Right now my focus is on getting through the core ECE curriculum — things like data structures, digital systems design, and linear algebra. These aren't always the most exciting classes but I know they're the foundation everything else builds on. I'm aiming to take more advanced ML and systems courses in my later years, specifically classes on machine learning, deep learning, and distributed systems.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div>
+          <h3>Gain research experience in AI/ML</h3>
+          <p>I've already started with this at NASA Langley and at Bethel Observatory, but I want to get more involved in AI-focused research while at GT. I'm planning to look into undergraduate research opportunities through GT's various labs — ideally something related to machine learning systems, computer vision, or efficient AI inference. Getting involved in research early is important if I eventually want to pursue a masters degree or PhD.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div>
+          <h3>Land a software or ML engineering internship</h3>
+          <p>By my sophomore or junior year, I want to intern at a company working on real AI/ML products. Companies like Google DeepMind, OpenAI, Nvidia, or any startup working on interesting AI applications are what I'm aiming for. The hackathon wins and current work at HexLabs should help build my portfolio for that.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div>
+          <h3>Keep building projects and contributing to open source</h3>
+          <p>I learn best by building things, so I plan to keep doing hackathons and personal projects throughout college. I also want to start contributing to open source ML projects — it's a great way to improve your skills and get noticed by companies. Projects like SnapShelf and Procuroid are a start, but I want to build things that are more technically deep over time.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div>
+          <h3>Graduate and enter the ML engineering field</h3>
+          <p>After graduation in 2028, I want to start working as an ML or AI systems engineer. Depending on where I am at that point, I might also consider going for a masters in ML or CS to go deeper on the research side. Either way, the goal is to be working on challenging, meaningful AI problems by the time I graduate.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <h2 style="margin-top: 0;">Timeline</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="year">2024 – 2025</div>
+        <h3>Getting Started</h3>
+        <p>Started at Georgia Tech, joined HexLabs, completed NASA Langley internship, competed in first hackathons. Established a foundation in CS and ECE fundamentals.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2025 – 2026</div>
+        <h3>Building Depth (Now)</h3>
+        <p>Continuing at HexLabs, completing this ePortfolio, taking core ECE courses. Looking into undergraduate research in AI/ML. Working toward first software internship applications.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2026 – 2027</div>
+        <h3>First Major Internship</h3>
+        <p>Goal: land a summer internship at a company working on AI/ML products. Take advanced ML coursework at GT. Start thinking about whether grad school is the right path.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2027 – 2028</div>
+        <h3>Senior Year & Beyond</h3>
+        <p>Complete senior capstone, finalize full-time job or grad school applications. Graduate in May 2028 and begin career as an AI/ML Engineer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PROJECTS ===================== -->
+<div class="page" id="page-projects">
+  <div class="container-wide">
+    <h1>Technical Projects</h1>
+    <p>Here are some of the projects I've worked on so far. Most of these came out of hackathons, research, or just personal curiosity. I'll keep adding to this page as I build more things throughout college.</p>
+
+    <div class="projects-grid">
+
+      <!-- SnapShelf -->
+      <div class="project-card">
+        <div class="project-card-img">🥦</div>
+        <div class="project-card-body">
+          <div class="project-award">🏆 Overall Runner Up — MongoDB x MLH HexDay, Nov 2025</div>
+          <h3>SnapShelf</h3>
+          <p>An AI-powered food recognition tool that lets you snap a photo of your groceries to automatically identify items, quantities, and expiration dates. Results get stored in a MongoDB-backed "virtual fridge" — the idea was to tackle the fact that over 30% of food gets wasted every year from forgotten or expired items.</p>
+          <p>I built the full-stack app with a Node.js/Express backend and React/Tailwind CSS frontend, and used Google Gemini for the computer vision piece. Users can view, sort, filter their fridge contents and even get AI recipe suggestions based on what they have.</p>
+          <div>
+            <span class="badge">Python</span>
+            <span class="badge">JavaScript</span>
+            <span class="badge">Google Gemini</span>
+            <span class="badge">MongoDB</span>
+            <span class="badge">React</span>
+            <span class="badge">Node.js</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Procuroid -->
+      <div class="project-card">
+        <div class="project-card-img">🤖</div>
+        <div class="project-card-body">
+          <div class="project-award">🏅 Google Cloud Honorable Mention — AIATL2025, Nov 2025</div>
+          <h3>Procuroid</h3>
+          <p>An AI procurement agent that automates the process of contacting suppliers, negotiating terms, and generating contracts. It uses OpenAI for natural language processing and Eleven Labs + Twilio for multilingual text-to-speech, so it can literally call suppliers on your behalf.</p>
+          <p>It also does web scraping with Google Gemini to find supplier info, processes call transcripts into a PostgreSQL database, and auto-generates PDF contracts with Python. Built this end-to-end at AIATL2025.</p>
+          <div>
+            <span class="badge">Python</span>
+            <span class="badge">OpenAI</span>
+            <span class="badge">Twilio</span>
+            <span class="badge">Eleven Labs</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">Google Gemini</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Astronomy CNN -->
+      <div class="project-card">
+        <div class="project-card-img">🌌</div>
+        <div class="project-card-body">
+          <h3>Astronomical Image Denoising CNN</h3>
+          <p>During my time as a lab assistant at Bethel College's Mabee Observatory, I designed, trained, and evaluated a Python-based convolutional neural network to denoise astronomical images and track celestial objects across 100+ Messier frames.</p>
+          <p>I also engineered a full pre/post-processing pipeline that integrated the model with GIMP and DeepSkyStacker, automating multi-frame workflows with up to 25% greater detection efficiency.</p>
+          <div>
+            <span class="badge">Python</span>
+            <span class="badge">CNN</span>
+            <span class="badge">Computer Vision</span>
+            <span class="badge">DeepSkyStacker</span>
+            <span class="badge">GIMP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder -->
+      <div class="project-placeholder">
+        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">📂</div>
+        <h3>Discovery Project — Coming Soon</h3>
+        <p style="font-size: 0.85rem; margin-bottom: 0;">This section will be updated with my ECE 1100 Discovery Project before the Discovery Project Showcase.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CONTACT ===================== -->
+<div class="page" id="page-contact">
+  <div class="container">
+    <h1>Contact</h1>
+    <p>Feel free to reach out — always happy to connect with people working on interesting things, or just to chat about AI, tech, or really anything.</p>
+
+    <div class="divider"></div>
+
+    <div class="contact-grid">
+      <div>
+        <h3 style="margin-bottom: 1rem;">Send me a message</h3>
+        <div class="contact-form">
+          <div>
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" placeholder="Your name" />
+          </div>
+          <div>
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" placeholder="your@email.com" />
+          </div>
+          <div>
+            <label for="cf-msg">Message</label>
+            <textarea id="cf-msg" placeholder="What's on your mind?"></textarea>
+          </div>
+          <button class="btn" onclick="handleFormSubmit()">Send Message</button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: 1rem;">Other ways to reach me</h3>
+        <div class="contact-info-item">
+          <div class="ci-icon">✉</div>
+          <div>
+            <p><strong>Email</strong></p>
+            <a href="mailto:wangjoshua98@gmail.com">wangjoshua98@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">in</div>
+          <div>
+            <p><strong>LinkedIn</strong></p>
+            <a href="https://linkedin.com/in/joshuaqwang" target="_blank">linkedin.com/in/joshuaqwang</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">⌥</div>
+          <div>
+            <p><strong>GitHub</strong></p>
+            <a href="https://github.com/wang-joshua" target="_blank">github.com/wang-joshua</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <p><strong>Location</strong></p>
+            <p style="margin-bottom:0;">Atlanta, GA (Georgia Tech)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Joshua Wang &nbsp;·&nbsp; Georgia Institute of Technology &nbsp;·&nbsp;
+  <a href="https://linkedin.com/in/joshuaqwang" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+  <a href="https://github.com/wang-joshua" target="_blank">GitHub</a>
+</footer>
+
+<!-- TOAST -->
+<div id="toast">Message sent! I'll get back to you soon.</div>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function handleFormSubmit() {
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const msg = document.getElementById('cf-msg').value.trim();
+    if (!name || !email || !msg) {
+      alert('Please fill out all fields before sending.');
+      return;
+    }
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+    document.getElementById('cf-name').value = '';
+    document.getElementById('cf-email').value = '';
+    document.getElementById('cf-msg').value = '';
+  }
+</script>
+
+</body>
+</html>
