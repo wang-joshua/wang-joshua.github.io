@@ -204,13 +204,6 @@
       object-position: center 15%;
     }
 
-    .home-photo-placeholder {
-      font-size: 0.78rem;
-      color: var(--text-light);
-      text-align: center;
-      padding: 1rem;
-    }
-
     .home-text h1 { margin-bottom: 0.5rem; }
     .home-text .subtitle {
       font-size: 1rem;
@@ -261,11 +254,7 @@
       padding: 1.2rem 1.4rem;
     }
 
-    .highlight-card .icon {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
-
+    .highlight-card .icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
     .highlight-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
     .highlight-card p { font-size: 0.85rem; margin-bottom: 0; }
 
@@ -326,7 +315,6 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       margin-top: 1.5rem;
-      display: none;
     }
 
     /* ===================== CAREER GOALS PAGE ===================== */
@@ -363,10 +351,7 @@
       margin-bottom: 0.2rem;
     }
 
-    .steps-list {
-      list-style: none;
-      margin-top: 0.75rem;
-    }
+    .steps-list { list-style: none; margin-top: 0.75rem; }
 
     .steps-list li {
       display: flex;
@@ -425,11 +410,7 @@
       font-size: 2rem;
     }
 
-    .project-card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .project-card-img img { width: 100%; height: 100%; object-fit: cover; }
 
     .project-card-body { padding: 1.2rem 1.3rem; }
 
@@ -448,18 +429,84 @@
     .project-card-body h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
     .project-card-body p { font-size: 0.88rem; margin-bottom: 0.75rem; }
 
-    .project-placeholder {
-      border: 2px dashed var(--border);
+    /* Discovery Project specific styles */
+    .discovery-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
       border-radius: var(--radius);
-      padding: 2rem;
-      text-align: center;
-      color: var(--text-light);
-      background: var(--bg2);
-      margin-top: 0.5rem;
-      grid-column: span 2;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      color: white;
     }
 
-    .project-placeholder h3 { color: var(--text-light); font-weight: 400; font-size: 0.95rem; }
+    .discovery-hero h2 {
+      color: white;
+      margin-top: 0;
+      font-size: 1.9rem;
+    }
+
+    .discovery-hero p { color: rgba(255,255,255,0.85); margin-bottom: 0.5rem; }
+
+    .discovery-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      margin: 0.2rem 0.2rem 0 0;
+    }
+
+    .discovery-section {
+      margin-bottom: 2rem;
+    }
+
+    .discovery-section h3 {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--accent-soft);
+    }
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .track-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+    }
+
+    .track-card .track-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .track-card.dd .track-label { color: #3182ce; }
+    .track-card.dv .track-label { color: #38a169; }
+    .track-card.pd .track-label { color: #e53e3e; }
+
+    .track-card h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .track-card p { font-size: 0.85rem; margin-bottom: 0; }
+
+    .outcome-box {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.2rem 1.4rem;
+      margin-top: 1rem;
+    }
+
+    .outcome-box p { margin-bottom: 0; color: var(--navy); font-size: 0.95rem; }
 
     /* ===================== CONTACT PAGE ===================== */
     .contact-grid {
@@ -546,10 +593,7 @@
       z-index: 999;
     }
 
-    #toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     /* RESPONSIVE */
     @media (max-width: 680px) {
@@ -559,9 +603,9 @@
       .about-grid { grid-template-columns: 1fr; }
       .about-photo { width: 160px; height: 200px; margin: 0 auto; }
       .projects-grid { grid-template-columns: 1fr; }
-      .project-placeholder { grid-column: span 1; }
       .contact-grid { grid-template-columns: 1fr; }
       .nav-links button { font-size: 0.8rem; padding: 0.35rem 0.55rem; }
+      .track-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -584,14 +628,13 @@
 <div class="page active" id="page-home">
   <div class="home-hero">
     <div class="home-photo">
-      <!-- Replace src with your actual photo path e.g. src="photo.jpg" -->
       <img src="photo.jpg" alt="Joshua Wang" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;" />
     </div>
     <div class="home-text">
       <p class="subtitle">Computer Engineering @ Georgia Tech</p>
       <h1>Hi, I'm Joshua Wang.</h1>
-      <p>I'm a first-year ECE student at Georgia Tech, originally from Fairfax, VA. I'm really passionate about AI and machine learning, and want to build intelligent systems that can actually do something useful in the real world.</p>
-      <p style="margin-bottom: 0.5rem;">I've had the chance to do research at NASA Langley, work as a software developer at HexLabs, and build some cool projects at hackathons. This site is kind of an overview of everything I've been working on so far, and where I'm hoping to go!</p>
+      <p>I'm a first-year Computer Engineering student at Georgia Tech from Fairfax, VA. I spent my freshman year exploring both hardware and software, and found a career direction that sits right at their intersection: AI infrastructure engineering, the discipline of building the software systems that make AI actually run at scale.</p>
+      <p style="margin-bottom: 0.5rem;">I build chips with Silicon Jackets, ship software with HexLabs and the GT SGA Tech Team, and compete in hackathons. This site is an overview of what I've been working on and where I'm headed.</p>
       <div class="home-links">
         <a class="home-icon-link" href="#" onclick="window.location='mail'+'to:'+'wangjoshua98'+'@'+'gmail.com'; return false;">✉ Email</a>
         <a class="home-icon-link" href="https://linkedin.com/in/joshuaqwang" target="_blank">in LinkedIn</a>
@@ -606,19 +649,19 @@
 
   <div class="home-highlights">
     <div class="highlight-card">
-      <div class="icon">🚀</div>
-      <h3>NASA Research Intern</h3>
-      <p>Researched carbon nanotube electronics for interplanetary travel at NASA Langley Research Center.</p>
+      <div class="icon">⚙️</div>
+      <h3>Silicon Jackets</h3>
+      <p>Building a cycle-accurate RISC-V superscalar CPU simulator in C++ as part of Georgia Tech's chip design club — one of the few members to complete all three onboarding tracks.</p>
     </div>
     <div class="highlight-card">
       <div class="icon">💻</div>
-      <h3>Software Developer</h3>
-      <p>Building backend infrastructure and helping organize HackGT at HexLabs: one of the biggest collegiate hackathons in the US.</p>
+      <h3>Degree Roadmap</h3>
+      <p>Founding engineer of an officially GT-sponsored course planning platform serving 11,000+ visitors, built with a custom search engine, data pipelines, and prerequisite graph.</p>
     </div>
     <div class="highlight-card">
       <div class="icon">🏆</div>
-      <h3>Hackathon Winner</h3>
-      <p>Runner-up at MongoDB x MLH HexDay, and Google Cloud honorable mention at AIATL2025.</p>
+      <h3>Hackathon Awards</h3>
+      <p>Overall Runner-Up at MongoDB x MLH HackDay and Google Cloud Honorable Mention at AIATL 2025. Also help organize HackGT, one of the largest collegiate hackathons in the US.</p>
     </div>
   </div>
 </div>
@@ -634,25 +677,24 @@
         </div>
       </div>
       <div>
-        <p>Hey! I'm Joshua Wang, a first-year Computer Engineering student at Georgia Tech, originally from Fairfax, Virginia. I'm concentrating in Distributed Systems & Software Design and Systems & Architecture, two areas I think are really important for building AI systems that actually work at scale.</p>
+        <p>Hey! I'm Joshua Wang, a first-year Computer Engineering student at Georgia Tech from Fairfax, Virginia. I came in genuinely unsure whether I belonged in hardware or software, so I spent my freshman year finding out — joining Silicon Jackets to do real chip design work while co-founding Degree Roadmap, contributing to HexLabs, and competing in hackathons.</p>
 
-        <p>Growing up I was always tinkering with computers, building custom PCs for people in high school, which eventually led me toward programming and then machine learning. My first real ML research was at Bethel College's Mabee Observatory, where I built a CNN to denoise astronomical images.</p>
+        <p>What I found was a career direction that sits exactly at the boundary of both: AI infrastructure engineering. Making AI faster is not an AI problem — it is a systems problem, and solving it requires understanding hardware and software equally. That realization came directly from building a cycle-accurate RISC-V processor simulator in C++ with Silicon Jackets, where the same architectural decisions that govern a processor's pipeline are the ones that determine how efficiently an AI model trains.</p>
 
-        <p>Last year I interned at NASA Langley Research Center, researching carbon nanotube electronics for interplanetary missions and leading a 10-student team on Mars mission integration. Right now I'm a Software Developer at HexLabs at Georgia Tech, working on backend infrastructure and helping organize HackGT, one of the largest collegiate hackathons in the US with sponsors like OpenAI and Google.</p>
-
-        <p>Outside of class I love playing sports, hiking, messing around with PC hardware, and trying to keep up with everything happening in the AI space.</p>
+        <p>Outside of class I love playing sports, hiking, building custom PCs, and keeping up with everything happening in the AI and systems space.</p>
 
         <div class="divider"></div>
         <h3>Technical Skills</h3>
         <div class="skills-grid">
-          <span class="badge">Python</span>
           <span class="badge">C / C++</span>
+          <span class="badge">Python</span>
           <span class="badge">Java</span>
           <span class="badge">TypeScript</span>
+          <span class="badge">SystemVerilog / Verilog</span>
+          <span class="badge">RISC-V Assembly</span>
           <span class="badge">React</span>
           <span class="badge">Node.js</span>
           <span class="badge">SQL</span>
-          <span class="badge">Verilog / SystemVerilog</span>
           <span class="badge">Machine Learning</span>
           <span class="badge">Computer Vision</span>
           <span class="badge">Neural Networks</span>
@@ -661,13 +703,14 @@
           <span class="badge">REST APIs</span>
           <span class="badge">MongoDB</span>
           <span class="badge">PostgreSQL</span>
+          <span class="badge">UVM / Cadence Xcelium</span>
         </div>
 
         <div class="divider"></div>
         <h3>Education</h3>
         <p><strong>Georgia Institute of Technology</strong>: B.S. Computer Engineering<br/>
-        Expected May 2028 &nbsp;·&nbsp; GPA: 4.00 / 4.00<br/>
-        <span style="font-size:0.88rem; color: var(--text-light);">Concentration: Distributed Systems & Software Design, Systems & Architecture</span></p>
+        Expected May 2028 &nbsp;·&nbsp; GPA: 4.00 / 4.00 &nbsp;·&nbsp; Dean's List<br/>
+        <span style="font-size:0.88rem; color: var(--text-light);">Threads: Systems &amp; Architecture; Distributed Systems &amp; Software Design</span></p>
       </div>
     </div>
   </div>
@@ -677,53 +720,61 @@
 <div class="page" id="page-resume">
   <div class="container">
     <h1>Resume</h1>
-    <p>Below is my current resume. You can download a PDF copy using the button below. I try to keep it up to date as I take on new projects and experiences.</p>
+    <p>Below is my current resume. You can download a PDF copy using the button below.</p>
 
-    <!-- UPDATE THIS HREF with the actual path to your resume PDF once uploaded to GitHub -->
     <a class="btn" href="Joshua_Wang_Resume.pdf" download>⬇ Download Resume (PDF)</a>
 
     <div class="divider"></div>
 
-    <h2 style="margin-top: 0;">Resume Overview</h2>
-    <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 2rem;">A summary of my experience and skills: download the full PDF above for complete details.</p>
+    <h2 style="margin-top: 0;">Experience Overview</h2>
+    <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 2rem;">Download the full PDF above for complete details.</p>
 
-    <!-- EXPERIENCE -->
     <h3>Experience</h3>
     <div style="margin-top: 0.75rem;">
+
       <div style="margin-bottom: 1.5rem; padding: 1.1rem 1.3rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border);">
         <div style="display:flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-          <strong>Software Developer at HexLabs</strong>
+          <strong>Digital Verification Engineer — Silicon Jackets</strong>
+          <span style="font-size:0.82rem; color: var(--text-light);">Jan 2026 – Present · Atlanta, GA</span>
+        </div>
+        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Completed all three onboarding tracks (Digital Design, Design Verification, Physical Design) with distinction. Designed a parameterized UVM testbench achieving 99.7% functional coverage. Currently building a cycle-accurate RISC-V superscalar CPU simulator in C++ for the team's next tapeout.</p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem; padding: 1.1rem 1.3rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border);">
+        <div style="display:flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+          <strong>Software Engineer — GT SGA Tech Team (Degree Roadmap)</strong>
+          <span style="font-size:0.82rem; color: var(--text-light);">Jan 2026 – Present · Atlanta, GA</span>
+        </div>
+        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Founding engineer of an officially GT-sponsored course planning platform at <a href="https://degree-roadmap.gatech.edu" target="_blank">degree-roadmap.gatech.edu</a>, scaling to 11,000+ visitors and 28,000+ page views. Built the fuzzy search engine, PDF parsing pipeline, prerequisite course graph, and major-specific course filter system.</p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem; padding: 1.1rem 1.3rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border);">
+        <div style="display:flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+          <strong>Software Engineer — HexLabs</strong>
           <span style="font-size:0.82rem; color: var(--text-light);">Nov 2025 – Present · Atlanta, GA</span>
         </div>
-        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Migrated backend infrastructure from Kubernetes to Google Cloud Run using TypeScript and Node.js. Working on Timber, HexLabs' hackathon judging platform, and helping organize HackGT with ~1,000 participants and sponsors like OpenAI and Google.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Migrated backend infrastructure from Kubernetes to Google Cloud Run using TypeScript and Node.js. Built new interfaces for Timber, HexLabs' hackathon judging platform. Helped organize HackGT (~1,000 participants; sponsors: OpenAI, Google, GitHub, T-Mobile, Snapchat) and SproutGT.</p>
       </div>
 
       <div style="margin-bottom: 1.5rem; padding: 1.1rem 1.3rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border);">
         <div style="display:flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-          <strong>Research Intern at NASA Langley Research Center</strong>
+          <strong>Research Scholar — NASA Langley Research Center</strong>
           <span style="font-size:0.82rem; color: var(--text-light);">Dec 2024 – Jun 2025 · Hampton, VA</span>
         </div>
-        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Investigated carbon nanotube-based electronics for interplanetary travel, showing up to 5x improved radiation resistance vs. standard silicon. Led a 10-student team on Mars mission integration, covering trajectory simulation, thermal modeling, and comms system design.</p>
-      </div>
-
-      <div style="margin-bottom: 1.5rem; padding: 1.1rem 1.3rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border);">
-        <div style="display:flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-          <strong>Lab Assistant at Bethel College Mabee Observatory</strong>
-          <span style="font-size:0.82rem; color: var(--text-light);">Jun – Aug 2024 · North Newton, KS</span>
-        </div>
-        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Built and trained a Python CNN to denoise astronomical images and track celestial objects across 100+ Messier frames, automating multi-frame workflows with up to 25% greater efficiency.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Investigated carbon nanotube-based electronics for interplanetary applications, demonstrating up to 5x improvement in radiation resistance over standard silicon. Appointed Deputy Systems Manager for a 10-student Mars mission integration study.</p>
       </div>
 
       <div style="margin-bottom: 0.5rem; padding: 1.1rem 1.3rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border);">
         <div style="display:flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-          <strong>Independent Computer Technician</strong>
-          <span style="font-size:0.82rem; color: var(--text-light);">Aug 2021 – Present · Fairfax, VA</span>
+          <strong>Research Assistant — Bethel College Mabee Observatory</strong>
+          <span style="font-size:0.82rem; color: var(--text-light);">Jun – Aug 2024 · North Newton, KS</span>
         </div>
-        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Built and configured custom desktop computers for 15+ clients. Diagnosed and optimized thermal and power performance for a range of systems with 100% customer satisfaction.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.88rem;">Designed and trained a Python CNN to denoise astronomical images and track celestial objects across 100+ Messier frames, with up to 25% greater detection efficiency. Built a full pre/post-processing pipeline integrating the model with GIMP and DeepSkyStacker.</p>
       </div>
+
     </div>
 
-    <iframe src="Joshua_Wang_Resume.pdf" class="resume-embed" style="display:block;"></iframe>
+    <iframe src="Joshua_Wang_Resume.pdf" class="resume-embed"></iframe>
   </div>
 </div>
 
@@ -731,46 +782,46 @@
 <div class="page" id="page-goals">
   <div class="container">
     <h1>Career Goals</h1>
-    <p>My long-term goal is to become an AI/ML Engineer, building intelligent systems that work in production and have real impact, whether in healthcare, space exploration, or robotics.</p>
-    <p>I'm still early and figuring things out, but here are the steps I'm planning to take:</p>
+    <p>My target is AI infrastructure engineering — the discipline of building the software systems that allow artificial intelligence to run at scale. Making AI faster is not an AI problem; it is a systems problem, and solving it requires understanding both hardware and software deeply. That is the exact boundary I want to work at.</p>
+    <p>Key target companies include Nvidia, Google (TPU/XLA), Meta (PyTorch), AMD, and emerging AI hardware companies like Groq, Cerebras, and Tenstorrent.</p>
 
     <div class="divider"></div>
 
-    <h2 style="margin-top: 0;">My Path to AI/ML Engineering</h2>
+    <h2 style="margin-top: 0;">My Path to AI Infrastructure Engineering</h2>
     <ul class="steps-list">
       <li>
         <div class="step-num">1</div>
         <div>
-          <h3>Build a strong foundation at Georgia Tech</h3>
-          <p>Working through core ECE courses like data structures, digital systems, and linear algebra. Planning to take advanced ML and distributed systems courses in later years.</p>
+          <h3>Build technical depth at Georgia Tech</h3>
+          <p>Pursuing Systems &amp; Architecture and Intelligence threads. Key courses: Advanced Computer Architecture, Compilers, Machine Learning, Deep Learning. Continuing chip design work with Silicon Jackets alongside systems software development.</p>
         </div>
       </li>
       <li>
         <div class="step-num">2</div>
         <div>
-          <h3>Gain research experience in AI/ML</h3>
-          <p>Already started at NASA Langley and Bethel Observatory. Planning to join GT undergraduate research labs in ML systems, computer vision, or AI inference, especially if I pursue a masters or PhD down the line.</p>
+          <h3>Join an AI systems research lab</h3>
+          <p>Targeting labs working directly on ML systems and GPU architecture at GT, including Prof. Tumanov's Systems for AI Lab (inference systems), Prof. Hao's SHARC Lab (ML compilers), and Prof. Kim's EIC Lab (GPU architecture). Best realistic timeline: Spring 2027.</p>
         </div>
       </li>
       <li>
         <div class="step-num">3</div>
         <div>
-          <h3>Land a software or ML engineering internship</h3>
-          <p>By sophomore or junior year, I want to intern at a company working on real AI/ML products, like Google DeepMind, OpenAI, or Nvidia. My hackathon projects and HexLabs experience should help get me there.</p>
+          <h3>Land an AI infrastructure internship</h3>
+          <p>Applying to the Nvidia Ignite Program for Summer 2027 (applications open Fall 2026). Building toward roles in GPU kernel engineering, ML compiler development, and distributed training infrastructure.</p>
         </div>
       </li>
       <li>
         <div class="step-num">4</div>
         <div>
-          <h3>Keep building projects and contributing to open source</h3>
-          <p>I learn by building things. I plan to keep doing hackathons and start contributing to open source ML projects. SnapShelf and Procuroid are a start, but I want to go deeper technically over time.</p>
+          <h3>Deepen systems expertise through VIP and independent projects</h3>
+          <p>Joining Team Phoenix (HPC Cluster Competition) or Supercomputing in the AI Era VIP for Fall 2026 to work on real GPU cluster optimization and benchmarking. Building CUDA projects and studying GPU profiling tools independently over Summer 2026.</p>
         </div>
       </li>
       <li>
         <div class="step-num">5</div>
         <div>
-          <h3>Graduate and enter the ML engineering field</h3>
-          <p>Graduate in May 2028 and start working as an ML or AI systems engineer. Might also consider a masters in ML or CS depending on where I am at that point.</p>
+          <h3>Graduate and enter the field</h3>
+          <p>Targeting early graduation by May 2027. Enter as an AI infrastructure or ML systems engineer, with the hardware background from Silicon Jackets and the software depth from CS as a differentiating combination in the field.</p>
         </div>
       </li>
     </ul>
@@ -780,24 +831,24 @@
     <h2 style="margin-top: 0;">Timeline</h2>
     <div class="timeline">
       <div class="timeline-item">
-        <div class="year">2024 – 2025</div>
-        <h3>Getting Started</h3>
-        <p>Started at Georgia Tech, joined HexLabs, completed NASA Langley internship, competed in first hackathons. Established a foundation in CS and ECE fundamentals.</p>
+        <div class="year">2025 – 2026</div>
+        <h3>Freshman Year — Exploration and Clarity</h3>
+        <p>Joined Silicon Jackets and completed all three onboarding tracks. Co-founded Degree Roadmap (11,000+ visitors). Won hackathon awards at AIATL 2025 and MongoDB x MLH HackDay. Discovered AI infrastructure engineering as a precise career target.</p>
       </div>
       <div class="timeline-item">
-        <div class="year">2025 – 2026</div>
-        <h3>Building Depth (Now)</h3>
-        <p>Continuing at HexLabs, completing this ePortfolio, taking core ECE courses. Looking into undergraduate research in AI/ML. Working toward first software internship applications.</p>
+        <div class="year">Summer 2026</div>
+        <h3>Building Technical Foundations</h3>
+        <p>Self-directed: learning CUDA, GPU profiling tools (nvprof/Nsight), and building a matrix multiplication kernel from scratch. LeetCode and Python depth without AI assistance. Re-contacting professors with concrete projects to show.</p>
       </div>
       <div class="timeline-item">
         <div class="year">2026 – 2027</div>
-        <h3>First Major Internship</h3>
-        <p>Goal: land a summer internship at a company working on AI/ML products. Take advanced ML coursework at GT. Start thinking about whether grad school is the right path.</p>
+        <h3>Sophomore Year — Research and Internship Pipeline</h3>
+        <p>Join VIP team in HPC/AI systems. Begin undergraduate research in AI systems lab. Apply to Nvidia Ignite Program for Summer 2027. Take core systems and ML courses.</p>
       </div>
       <div class="timeline-item">
         <div class="year">2027 – 2028</div>
-        <h3>Senior Year & Beyond</h3>
-        <p>Complete senior capstone, finalize full-time job or grad school applications. Graduate in May 2028 and begin career as an AI/ML Engineer.</p>
+        <h3>Junior Year and Beyond</h3>
+        <p>AI infrastructure internship. Deepen compiler and GPU architecture knowledge. Target early graduation May 2027 or continue to May 2028. Full-time role in AI infrastructure engineering.</p>
       </div>
     </div>
   </div>
@@ -807,21 +858,119 @@
 <div class="page" id="page-projects">
   <div class="container-wide">
     <h1>Technical Projects</h1>
-    <p>Here are some of the projects I've worked on so far. Most of these came out of hackathons, research, or just personal curiosity. I'll keep adding to this page as I build more things throughout college.</p>
+    <p>Projects from chip design, software engineering, and hackathons. I'll keep adding to this as I build more throughout college.</p>
+
+    <!-- DISCOVERY PROJECT FEATURE -->
+    <div style="margin-top: 2rem;">
+      <div class="discovery-hero">
+        <div style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem;">ECE 1100 Discovery Project</div>
+        <h2>Silicon Jackets Onboarding: Full RTL-to-GDS Flow</h2>
+        <p>A semester-long deep dive into professional chip design — covering Digital Design, Design Verification, and Physical Design — culminating in a 64-bit calculator in silicon and a path to the RISC-V tapeout team.</p>
+        <div style="margin-top: 1rem;">
+          <span class="discovery-tag">SystemVerilog</span>
+          <span class="discovery-tag">UVM</span>
+          <span class="discovery-tag">Cadence Xcelium</span>
+          <span class="discovery-tag">RTL Design</span>
+          <span class="discovery-tag">Physical Design</span>
+          <span class="discovery-tag">C++</span>
+        </div>
+      </div>
+
+      <div class="discovery-section">
+        <h3>The Problem — Starting Idea</h3>
+        <p>I joined Silicon Jackets because I was genuinely curious about chip design. Coming in as a Computer Engineering student, I knew hardware existed — but I had a vague, surface-level understanding of what designing a chip actually involved. I assumed it was mostly physical wiring and circuit diagrams. The reality turned out to be far more interesting, and far more connected to the software world I was already exploring.</p>
+        <p>My goal going in was simple: complete the onboarding and figure out whether hardware was a direction I wanted to pursue seriously. What I didn't expect was that the answer would lead me somewhere much more specific.</p>
+      </div>
+
+      <div class="discovery-section">
+        <h3>The Process — Three Tracks, Three Perspectives</h3>
+        <p>Silicon Jackets onboarding runs across three parallel tracks, each covering a different phase of the chip design flow. I completed all three.</p>
+
+        <div class="track-grid">
+          <div class="track-card dd">
+            <div class="track-label">Digital Design</div>
+            <h3>RTL Design</h3>
+            <p>Designed a 64-bit calculator system in SystemVerilog — including a 32-bit adder, FSM controller, result buffer, and full top-level integration with an SRAM macro. Learned combinational vs. sequential logic, memory-mapped interfaces, and waveform-based debugging in Cadence Xcelium.</p>
+          </div>
+          <div class="track-card dv">
+            <div class="track-label">Design Verification</div>
+            <h3>UVM Testbench</h3>
+            <p>Built a full parameterized UVM testbench — driver, monitor, scoreboard, sequencer — for the 32/64-bit SRAM calculator, achieving 99.7% functional coverage and 100% assertion pass rate. DV ended up being the track that clicked most naturally for me.</p>
+          </div>
+          <div class="track-card pd">
+            <div class="track-label">Physical Design</div>
+            <h3>RTL to GDS</h3>
+            <p>Took the design through the full physical implementation flow in Cadence Innovus — from synthesis to place-and-route to signoff. Resolved timing violations (WNS from -2.701ns to +0.01ns) and eliminated 1,000 DRC violations to achieve a clean GDS. This was the hardest track by far.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="discovery-section">
+        <h3>Successes and Failures</h3>
+        <p>The biggest challenge was the sheer amount of new material across all three tracks simultaneously. Every tool, every concept, and every workflow was brand new — there was no prior experience to lean on. Physical Design in particular was a steep climb. The EDA tools are complex, the failure modes are cryptic, and the gap between "it simulates" and "it's physically realizable" is larger than it looks from the outside.</p>
+        <p>Design Verification was the opposite — it clicked almost immediately. Writing the testbench felt closer to software engineering than traditional hardware design, and I found I had a natural instinct for it. Hitting 99.7% functional coverage on the first major project was a genuine milestone.</p>
+        <p>The biggest success was simply finishing all three tracks. Most members specialize in one. Completing the full flow gave me a picture of how hardware actually gets built from specification to silicon — a perspective most software engineers never develop.</p>
+      </div>
+
+      <div class="discovery-section">
+        <h3>ECE Skills Gained</h3>
+        <p>Coming in, I could write Python and build web applications. Coming out, I can design and verify digital hardware at a professional level. Specific skills developed:</p>
+        <div style="margin-top: 0.75rem;">
+          <span class="badge">SystemVerilog RTL Design</span>
+          <span class="badge">FSM Design and Control</span>
+          <span class="badge">UVM Verification Methodology</span>
+          <span class="badge">Functional Coverage Analysis</span>
+          <span class="badge">Cadence Xcelium / Innovus</span>
+          <span class="badge">Timing Closure and SDC Constraints</span>
+          <span class="badge">DRC Violation Resolution</span>
+          <span class="badge">Full RTL-to-GDS Flow</span>
+          <span class="badge">Make-based EDA Automation</span>
+        </div>
+      </div>
+
+      <div class="discovery-section">
+        <h3>Outcome — What This Changed</h3>
+        <div class="outcome-box">
+          <p>Completing the Silicon Jackets onboarding didn't just teach me hardware — it clarified my entire direction. Working on the processor simulator made something click: making AI faster is not an AI problem, it is a systems problem. Performance is constrained less by model design than by how efficiently data moves through memory and hardware. That realization, combined with my software work on Degree Roadmap and HexLabs, pointed me toward AI infrastructure engineering as a precise career target. I've since joined the Silicon Jackets simulator team, where I'm building a cycle-accurate RISC-V superscalar CPU simulator in C++ — the natural continuation of everything this project started.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 style="margin-top: 0;">Software Projects</h2>
 
     <div class="projects-grid">
+
+      <!-- Degree Roadmap -->
+      <div class="project-card" style="grid-column: span 2;">
+        <div class="project-card-img" style="background: linear-gradient(135deg, #1e3a5f, #3b6cb7); font-size: 1rem; color: white; flex-direction: column; gap: 0.5rem;">
+          <div style="font-size: 2rem;">🎓</div>
+          <div style="font-weight: 600;">degree-roadmap.gatech.edu</div>
+        </div>
+        <div class="project-card-body">
+          <h3>Degree Roadmap — GT SGA Tech Team</h3>
+          <p>Officially GT-sponsored course planning platform serving GT students. Scaled to 11,000+ visitors and 28,000+ page views within weeks of launch. I built the fuzzy search engine for course discovery, a PDF parsing pipeline to convert unstructured degree requirement documents into structured data, a major-specific course filter with a custom web scraper targeting GT's proprietary API, and a live prerequisite course tree — an interactive directed graph of class dependencies.</p>
+          <div>
+            <span class="badge">TypeScript</span>
+            <span class="badge">React</span>
+            <span class="badge">Node.js</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">GCP</span>
+          </div>
+          <a href="https://degree-roadmap.gatech.edu" target="_blank" class="btn btn-outline" style="margin-top:0.75rem; font-size:0.82rem; padding:0.4rem 0.9rem;">Visit Platform →</a>
+        </div>
+      </div>
 
       <!-- SnapShelf -->
       <div class="project-card">
         <div class="project-card-img"><img src="snapshelf.jpg" alt="SnapShelf" /></div>
         <div class="project-card-body">
-          <div class="project-award">🏆 Overall Runner Up, MongoDB x MLH HexDay, Nov 2025</div>
+          <div class="project-award">🏆 Overall Runner-Up, MongoDB x MLH HackDay, Nov 2025</div>
           <h3>SnapShelf</h3>
-          <p>An AI-powered food recognition tool that lets you snap a photo of your groceries to automatically identify items, quantities, and expiration dates. Results get stored in a MongoDB-backed "virtual fridge": the idea was to tackle the fact that over 30% of food gets wasted every year from forgotten or expired items.</p>
-          <p>I built the full-stack app with a Node.js/Express backend and React/Tailwind CSS frontend, and used Google Gemini for the computer vision piece. Users can view, sort, filter their fridge contents and even get AI recipe suggestions based on what they have.</p>
+          <p>AI-powered food recognition tool that identifies groceries, quantities, and expiration dates from a single photo, storing results in a MongoDB-backed virtual fridge. Built to combat the 30%+ of food wasted annually from forgotten or expired items.</p>
           <div>
             <span class="badge">Python</span>
-            <span class="badge">JavaScript</span>
             <span class="badge">Google Gemini</span>
             <span class="badge">MongoDB</span>
             <span class="badge">React</span>
@@ -835,15 +984,13 @@
       <div class="project-card">
         <div class="project-card-img"><img src="procuroid.jpg" alt="Procuroid" /></div>
         <div class="project-card-body">
-          <div class="project-award">🏅 Google Cloud Honorable Mention, AIATL2025, Nov 2025</div>
+          <div class="project-award">🏅 Google Cloud Honorable Mention, AIATL 2025, Nov 2025</div>
           <h3>Procuroid</h3>
-          <p>An AI procurement agent that automates the process of contacting suppliers, negotiating terms, and generating contracts. It uses OpenAI for natural language processing and Eleven Labs + Twilio for multilingual text-to-speech, so it can literally call suppliers on your behalf.</p>
-          <p>It also does web scraping with Google Gemini to find supplier info, processes call transcripts into a PostgreSQL database, and auto-generates PDF contracts with Python. Built this end-to-end at AIATL2025.</p>
+          <p>Agentic AI procurement system that automates supplier discovery, negotiation calls, and contract generation end-to-end. Uses OpenAI for NLP, ElevenLabs and Twilio for multilingual voice synthesis, and Gemini-powered web scraping.</p>
           <div>
             <span class="badge">Python</span>
             <span class="badge">OpenAI</span>
             <span class="badge">Twilio</span>
-            <span class="badge">Eleven Labs</span>
             <span class="badge">PostgreSQL</span>
             <span class="badge">Google Gemini</span>
           </div>
@@ -856,37 +1003,27 @@
         <div class="project-card-img"><img src="bethel.jpg" alt="Astronomical Image Denoising CNN" /></div>
         <div class="project-card-body">
           <h3>Astronomical Image Denoising CNN</h3>
-          <p>During my time as a lab assistant at Bethel College's Mabee Observatory, I designed, trained, and evaluated a Python-based convolutional neural network to denoise astronomical images and track celestial objects across 100+ Messier frames.</p>
-          <p>I also engineered a full pre/post-processing pipeline that integrated the model with GIMP and DeepSkyStacker, automating multi-frame workflows with up to 25% greater detection efficiency.</p>
+          <p>Designed, trained, and evaluated a Python CNN to denoise astronomical images and track celestial objects across 100+ Messier frames, with up to 25% greater detection efficiency. Built a full pre/post-processing pipeline integrating with GIMP and DeepSkyStacker.</p>
           <div>
             <span class="badge">Python</span>
             <span class="badge">CNN</span>
             <span class="badge">Computer Vision</span>
             <span class="badge">DeepSkyStacker</span>
-            <span class="badge">GIMP</span>
           </div>
         </div>
       </div>
 
-      <!-- Placeholder -->
-      <div class="project-placeholder">
-        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">📂</div>
-        <h3>Discovery Project - Coming Soon</h3>
-        <p style="font-size: 0.85rem; margin-bottom: 0;">This section will be updated with my ECE 1100 Discovery Project before the Discovery Project Showcase.</p>
-      </div>
-
       <!-- HexLabs -->
-      <div class="project-card" style="grid-column: span 2;">
-        <div class="project-card-img"><img src="hexlabs.jpg" alt="HexLabs HackGT" /></div>
+      <div class="project-card">
+        <div class="project-card-img"><img src="hexlabs.jpg" alt="HexLabs" /></div>
         <div class="project-card-body">
-          <h3>HexLabs: Software Developer & HackGT Organizer</h3>
-          <p>Currently working as a Software Developer at HexLabs, Georgia Tech's flagship tech organization. I help build and maintain Timber, HexLabs' hackathon submission and judging platform, and contribute to organizing HackGT, one of the largest collegiate hackathons in the US with around 1,000 participants and sponsors like OpenAI, Google, GitHub, and Snapchat.</p>
+          <h3>HexLabs — Software Engineer</h3>
+          <p>Backend infrastructure work at Georgia Tech's flagship tech org. Migrated deployment from Kubernetes to Google Cloud Run, built new interfaces for Timber (hackathon judging platform), and helped organize HackGT (~1,000 participants) and SproutGT with sponsors including OpenAI, Google, and GitHub.</p>
           <div>
             <span class="badge">TypeScript</span>
             <span class="badge">Node.js</span>
             <span class="badge">React</span>
             <span class="badge">Google Cloud</span>
-            <span class="badge">Figma</span>
           </div>
         </div>
       </div>
@@ -899,7 +1036,7 @@
 <div class="page" id="page-contact">
   <div class="container">
     <h1>Contact</h1>
-    <p>Feel free to reach out, always happy to connect with people working on interesting things, or just to chat about AI, tech, or really anything.</p>
+    <p>Feel free to reach out — always happy to connect with people working on interesting things, or just to chat about AI systems, hardware, or anything in between.</p>
 
     <div class="divider"></div>
 
@@ -929,7 +1066,7 @@
           <div class="ci-icon">✉</div>
           <div>
             <p><strong>Email</strong></p>
-            <a href="#" onclick="window.location='mail'+'to:'+'wangjoshua98'+'@'+'gmail.com'; return false;"><span class="__cf_email__" data-cfemail="2d5a4c434a47425e45584c14156d4a404c4441034e4240">[email&#160;protected]</span></a>
+            <a href="#" onclick="window.location='mail'+'to:'+'wangjoshua98'+'@'+'gmail.com'; return false;">wangjoshua98@gmail.com</a>
           </div>
         </div>
         <div class="contact-info-item">
@@ -965,7 +1102,6 @@
   <a href="https://github.com/wang-joshua" target="_blank">GitHub</a>
 </footer>
 
-<!-- TOAST -->
 <div id="toast">Message sent! I'll get back to you soon.</div>
 
 <script>
